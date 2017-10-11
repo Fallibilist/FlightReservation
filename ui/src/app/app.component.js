@@ -1,14 +1,7 @@
-import templateUrl from './app.component.html'
-
-/* @ngInject */
-class AppController {
-  constructor ($log) {
-    $log.debug('AppController is a go.')
-  }
-}
+import templateUrl from './app.template.html'
 
 export default {
   templateUrl,
-  controller: AppController,
+  controller: 'appController',
   controllerAs: '$appCtrl'
 }

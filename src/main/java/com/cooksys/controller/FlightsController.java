@@ -2,7 +2,6 @@ package com.cooksys.controller;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +15,14 @@ import com.cooksys.service.LocationService;
 @CrossOrigin
 public class FlightsController {
 	
-	@Autowired
 	LocationService locationService;
 	
-	@Autowired
 	FlightService flightService;
+	
+	public FlightsController(LocationService locationService, FlightService flightService) {
+		this.locationService = locationService;
+		this.flightService = flightService;
+	}
 	
 	@RequestMapping
 	public ArrayList<Flight> getFlightList()

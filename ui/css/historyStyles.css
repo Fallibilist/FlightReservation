@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "Cook";
+    src: url(Cook.ttf);
+}
+
+.historyWindow {
+    display: flex;
+    flex-direction: row;
+    
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.listPanel {
+    width: 25vw;
+
+    border-right: 1px solid #A6683B;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mapPanel {
+    width: 49vw;
+    height: calc(100vh - 252px);
+
+    border-right: 1px solid #A6683B;
+    margin-left: 1vw;
+    padding-right: 1vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoPanel {
+    width: 25vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.listItem {
+    width: 21vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: calc((100vh - 252px) / 6);
+}
+
+.listItem:hover {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.00), rgba(61, 18, 0, 0.95), rgba(0, 0, 0, 0.00));
+}
+
+.listTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: calc((100vh - 252px) / 6);
+
+    width: 23vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+
+    font-size: 50px;
+    font-family: 'Cook';
+    color: #340101;
+    text-shadow: #D78952 1px 1px 2px;
+    text-align: center;
+
+    background: linear-gradient(rgba(15, 0, 0, 0.95), rgba(61, 18, 0, 0.58));
+    border: 1px solid #A6683B;
+}
+
+.listItemBordered {
+    border-bottom: 1px solid #A6683B;
+}
+
+.infoTitle {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 23vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+
+    font-size: 50px;
+    font-family: 'Cook';
+    color: #340101;
+    text-shadow: #D78952 1px 1px 2px;
+    text-align: center;
+
+    background: linear-gradient(rgba(15, 0, 0, 0.95), rgba(61, 18, 0, 0.58));
+    border: 1px solid #A6683B;
+    
+    height: calc((100vh - 252px) / 6);
+}
+
+.infoBody {
+    height: calc(((100vh - 252px) / 6) * 5);
+
+    width: 21vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.destinationInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: calc(((100vh - 252px) / 6) * 3);
+    border-bottom: 1px solid #A6683B;
+}
+
+.flightTime {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: calc((100vh - 252px) / 6);
+    border-bottom: 1px solid #A6683B;
+}
+
+.layoverTime {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: calc((100vh - 252px) / 6);
+}

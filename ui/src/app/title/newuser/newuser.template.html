@@ -1,0 +1,24 @@
+<div class="newuserBox">
+    <div class="boxTitle"> New Account </div>
+
+    <div class="boxBody">
+        <div>Username</div>
+        <input type="text" 
+            class="boxInput" 
+            ng-style="{'border-color': $ctrl.usernameErrorCss }" 
+            ng-model="$ctrl.submission.username">
+
+        <div>Password</div>
+        <input type="password" 
+            class="boxInput" 
+            ng-style="{'border-color': $ctrl.passwordErrorCss }" 
+            ng-model="$ctrl.submission.password"
+            ng-keyup="$event.keyCode == 13 && $ctrl.createNewUser()">
+    </div>
+
+    <div class="boxFooter">
+        <button class='boxButton' ng-click='$ctrl.createNewUser()'> Create Account </button>
+    </div>
+
+    <button class='btn btn-link' ui-sref='title.login'> Already have an account? </button>
+</div>

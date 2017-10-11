@@ -9,3 +9,4 @@ require('angular-ui-router')
 require('ngmap')
 
 require('angular-material/angular-material.css')
+require('bootstrap/dist/css/bootstrap.css')
