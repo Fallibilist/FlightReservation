@@ -7,7 +7,7 @@ class LoginService {
     }
 
     login(credentials) {
-        return $http.post(`${this.apiUrl}/users/login/`, credentials)
+        return this.$http.post(`${this.apiUrl}/users/login/`, credentials)
     }
 
 }

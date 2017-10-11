@@ -2,7 +2,7 @@
         <div class="tripPanelSearchbar">
                 From:
                 <div class="tripDestinationDropdown">
-                        <select class="dropdownOption">
+                        <select ng-click="$tripsCtrl.retrieveTrips()"class="dropdownOption" ng-model="$tripsCtrl.originSelection">
                                 <option value="Chattanooga" class="dropdownOption">Chattanooga</option>
                                 <option value="Knoxville" class="dropdownOption">Knoxville</option>
                                 <option value="Nashville" class="dropdownOption">Nashville</option>
@@ -11,7 +11,7 @@
                 </div>
                 To:
                 <div class="tripDestinationDropdown">
-                        <select class="dropdownOption">
+                        <select ng-click="$tripsCtrl.retrieveTrips()"class="dropdownOption" ng-model="$tripsCtrl.destinationSelection">
                                 <option value="Chattanooga" class="dropdownOption">Chattanooga</option>
                                 <option value="Knoxville" class="dropdownOption">Knoxville</option>
                                 <option value="Nashville" class="dropdownOption">Nashville</option>
@@ -19,8 +19,7 @@
                         </select>
                 </div>
         </div>
-        <div class="tripPanelItem flightListItemBordered"> From Memphis --> Nashville </div>
-        <div class="tripPanelItem flightListItemBordered"> From Memphis --> Knoxville --> Nashville </div>
-        <div class="tripPanelItem flightListItemBordered"> From Memphis --> Knoxville --> Nashville etc </div>
-        <div class="tripPanelItem"> From Memphis --> Knoxville --> Chattanooga --> Nashville </div>
+        <div class="tripPanelItem" ng-repeat="trip in $tripsCtrl.tripList" ng-click="$tripsCtrl.bookTrip(trip)"> 
+                <div ng-repeat="output in trip.output">{{ output }}</div> 
+        </div>
 </div>

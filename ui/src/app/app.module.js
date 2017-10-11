@@ -82,4 +82,5 @@ angular
   .constant('apiUrl', apiUrl)
   .component('appComponent', appComponent)
   .controller('appController', appController)
+  .service('userDataService', userDataService)
   .name

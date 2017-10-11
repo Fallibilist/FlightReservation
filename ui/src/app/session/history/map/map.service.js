@@ -7,7 +7,7 @@ class MapService {
 
   getMarkerByCityName(name) {
     return this.$http
-      .get(`${this.apiUrl}/location/name`, {
+      .get(`${this.apiUrl}/location/name/`, {
         params: {
           name
         }

@@ -13,7 +13,7 @@ import com.cooksys.entity.Location;
 import com.cooksys.service.LocationService;
 
 @RestController
-@RequestMapping("location")
+@RequestMapping("/location/")
 @CrossOrigin
 public class LocationController {
 	
@@ -32,12 +32,12 @@ public class LocationController {
 		return locationService.getAll();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{id}/")
 	public Location get(@PathVariable("id") long id) {
 		return locationService.get(id);
 	}
 	
-	@GetMapping("/name")
+	@GetMapping("/name/")
 	public Location get(@RequestParam("name") String cityName)
 	{
 		return locationService.get(cityName);

@@ -5,19 +5,19 @@
         <div>Username</div>
         <input type="text" 
             class="boxInput" 
-            ng-style="{'border-color': $ctrl.usernameErrorCss }" 
-            ng-model="$ctrl.submission.username">
+            ng-style="{'border-color': $newuserCtrl.usernameErrorCss }" 
+            ng-model="$newuserCtrl.submission.username">
 
         <div>Password</div>
         <input type="password" 
             class="boxInput" 
-            ng-style="{'border-color': $ctrl.passwordErrorCss }" 
-            ng-model="$ctrl.submission.password"
-            ng-keyup="$event.keyCode == 13 && $ctrl.createNewUser()">
+            ng-style="{'border-color': $newuserCtrl.passwordErrorCss }" 
+            ng-model="$newuserCtrl.submission.password"
+            ng-keyup="$event.keyCode == 13 && $newuserCtrl.createNewUser()">
     </div>
 
     <div class="boxFooter">
-        <button class='boxButton' ng-click='$ctrl.createNewUser()'> Create Account </button>
+        <button class='boxButton' ng-click='$newuserCtrl.createNewUser()'> Create Account </button>
     </div>
 
     <button class='btn btn-link' ui-sref='title.login'> Already have an account? </button>

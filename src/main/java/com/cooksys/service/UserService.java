@@ -64,7 +64,7 @@ public class UserService {
 		UserEntity user = userMapper.fromDtoSave(userSaveDto);
 		CredentialsEmbeddable credentials = user.getCredentials();
 		
-		if(credentials.getUsername() == null || credentials.getPassword() == null) {
+		if(credentials == null || credentials.getUsername() == null || credentials.getPassword() == null) {
 			throw new FlightAppException(ErrorType.NOT_ACCEPTABLE);
 		}
 		

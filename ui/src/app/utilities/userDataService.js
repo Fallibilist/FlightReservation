@@ -12,7 +12,7 @@ class UserDataService {
     }
 
     loggedIn() {
-        this.credentials.username !== undefined && this.credentials.password !== undefined
+        return this.credentials.username !== undefined && this.credentials.password !== undefined
     }
 }
 

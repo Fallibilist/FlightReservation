@@ -36,4 +36,57 @@ public class FlightGenerator {
 		return result;
 	}
 
+	public ArrayList<ArrayList<Flight>> generateNewTripList(String origin, String destination,  ArrayList<Flight> flightList) {
+		
+		if(origin == null || destination == null) {
+			return null;
+		}
+		
+		ArrayList<ArrayList<Flight>> result = new ArrayList<>();
+
+//		Trip tripBuilder = new Trip();
+//		tripBuilder.getOrigins().add(flight.getOrigin());
+//		tripBuilder.getDestinations().add(flight.getDestination());
+//		tripBuilder.getFlightTimes().add(flight.getFlightTime());
+		
+		flightList.forEach((flight) -> {
+			if(flight.getOrigin().equals(origin)) {
+				if(flight.getDestination().equals(destination)) {
+					ArrayList<Flight> tripBuilder = new ArrayList<>();
+					tripBuilder.add(flight);
+					result.add(tripBuilder);
+				} else {
+					flightList.forEach((secondFlight) -> {
+						if(secondFlight.getOffset() > flight.getOffset()
+								&& secondFlight.getOrigin().equals(flight.getDestination())) {
+							if(secondFlight.getDestination().equals(destination)) {
+								ArrayList<Flight> tripBuilder = new ArrayList<>();
+								tripBuilder.add(flight);
+								tripBuilder.add(secondFlight);
+								result.add(tripBuilder);
+							} else {
+								flightList.forEach((thirdFlight) -> {
+									if(thirdFlight.getOffset() > secondFlight.getOffset()
+											&& thirdFlight.getOrigin().equals(secondFlight.getDestination())
+											&& !thirdFlight.getOrigin().equals(flight.getOrigin())) {
+										if(thirdFlight.getDestination().equals(destination)) {
+											ArrayList<Flight> tripBuilder = new ArrayList<>();
+											tripBuilder.add(flight);
+											tripBuilder.add(secondFlight);
+											tripBuilder.add(thirdFlight);
+											result.add(tripBuilder);
+										}
+									}
+								});
+							}
+						}
+					});
+				}
+			}
+		});
+		
+		return result;
+		 
+	}
+
 }

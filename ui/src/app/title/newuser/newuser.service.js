@@ -7,7 +7,7 @@ class NewuserService {
     }
 
     createNewUser(credentials) {
-        return $http.post(`${this.apiUrl}/users/new/`, credentials)
+        return this.$http.post(`${this.apiUrl}/users/new/`, credentials)
     }
 }
 
