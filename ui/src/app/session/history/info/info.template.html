@@ -1,8 +1,8 @@
 <div class="infoPanel">
         <div class="infoTitle"> Trip Details </div>
         <div class="infoBody">
-                <div class="destinationInfo"> Memphis --> Nashville </div>
-                <div class="flightTime"> Flight Time:  </div>
-                <div class="layoverTime"> Layover Time:  </div>
+                <div class="destinationInfo"> {{ $infoCtrl.historyService.trip.destinationInfo }} </div>
+                <div class="flightTime"> {{ $infoCtrl.historyService.trip.totalFlightTime }} </div>
+                <div class="layoverTime"> {{ $infoCtrl.historyService.trip.totalLayoverTime }} </div>
         </div>
 </div>

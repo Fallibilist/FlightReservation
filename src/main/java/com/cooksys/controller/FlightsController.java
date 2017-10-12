@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooksys.dto.TripDto;
 import com.cooksys.entity.Trip;
 import com.cooksys.exception.FlightAppException;
 import com.cooksys.pojo.Flight;
@@ -47,7 +48,7 @@ public class FlightsController {
 	}
 	
 	@GetMapping("/trips/{username}")
-	public List<Trip> getBookedTrips(@PathVariable String username, HttpServletResponse response)
+	public List<TripDto> getBookedTrips(@PathVariable String username, HttpServletResponse response)
 	{
 		try {
 			return flightService.getBookedTrips(username);

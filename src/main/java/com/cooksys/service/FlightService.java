@@ -7,10 +7,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.component.FlightGenerator;
+import com.cooksys.dto.TripDto;
 import com.cooksys.entity.Trip;
 import com.cooksys.entity.UserEntity;
 import com.cooksys.exception.ErrorType;
 import com.cooksys.exception.FlightAppException;
+import com.cooksys.mapper.TripMapper;
 import com.cooksys.pojo.Flight;
 import com.cooksys.repository.TripJpaRepository;
 import com.cooksys.repository.UserJpaRepository;
@@ -31,11 +33,14 @@ public class FlightService {
 	private String origin;
 	
 	private String destination;
+
+	private TripMapper tripMapper;
 	
-	public FlightService(FlightGenerator generator, UserJpaRepository userJpaRepository, TripJpaRepository tripJpaRepository) {
+	public FlightService(FlightGenerator generator, UserJpaRepository userJpaRepository, TripJpaRepository tripJpaRepository, TripMapper tripMapper) {
 		this.generator = generator;
 		this.userJpaRepository = userJpaRepository;
 		this.tripJpaRepository = tripJpaRepository;
+		this.tripMapper = tripMapper;
 	}
 	
 	public ArrayList<Flight> getDailyFlightList()
@@ -52,13 +57,18 @@ public class FlightService {
 		return tripList;
 	}
 
-	public List<Trip> getBookedTrips(String username) throws FlightAppException {
+	public List<TripDto> getBookedTrips(String username) throws FlightAppException {
 		if(username == null) {
 			throw new FlightAppException(ErrorType.NOT_FOUND);
 		}
 
 		UserEntity user = userJpaRepository.findByCredentialsUsername(username);
-		return user.getTrips();
+
+		if(user.getTrips() != null && !user.getTrips().isEmpty()) {
+			return tripMapper.toDto(user.getTrips());
+		} else {
+			return null;
+		}
 	}
 
 	public void bookTrip(Trip trip, String username) throws FlightAppException {
@@ -67,13 +77,13 @@ public class FlightService {
 		}
 		
 		UserEntity user = userJpaRepository.findByCredentialsUsername(username);
+		trip.setUser(user);
+		System.out.println("\n\n\n\n\nId: " + trip.getId() + "\nOrigin: " + trip.getOrigins() + "\nDestination: " + trip.getUser() + "\n\n\n\n");
 		tripJpaRepository.save(trip);
-		user.getTrips().add(trip);
-		userJpaRepository.save(user);
 	}
 	
 	//The fixedDelay parameter determines how often a new day is generated as expressed in milliseconds
-	@Scheduled(fixedDelay=50000)
+	@Scheduled(fixedDelay=10000)
 	private void refreshFlights()
 	{
 		flightList = generator.generateNewFlightList();

@@ -43,6 +43,33 @@
 
 }
 
+.listButtons {
+    width: calc(25vw - 5px);
+    height: calc((((100vh - 252px) / 6) * 5) - 5px);
+
+    margin-top: 5px;
+    margin-right: 5px;
+
+    overflow: scroll;
+}
+
+.listButtons::-webkit-scrollbar {
+    width: 1em;
+}
+
+.listButtons::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.00);
+}
+
+.listButtons::-webkit-scrollbar-thumb {
+    background: radial-gradient(rgba(175, 59, 0, 0.91), rgba(66, 32, 2, 0.34), rgba(66, 32, 2, 0.00));
+    outline: 1px solid #D46E09;
+}
+
+.listButtons::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.00);
+}
+
 .listItem {
     width: 21vw;
     margin-left: 2vw;
@@ -52,7 +79,11 @@
     align-items: center;
     justify-content: center;
 
-    height: calc((100vh - 252px) / 6);
+    font-size: 15px;
+    color: #847B7B;
+    text-shadow: #130A03 1px 1px 2px;
+
+    height: calc(((100vh - 252px) / 6) - 1px);
 }
 
 .listItem:hover {
@@ -111,6 +142,10 @@
     width: 21vw;
     margin-left: 2vw;
     margin-right: 2vw;
+    
+    font-size: 15px;
+    color: #847B7B;
+    text-shadow: #130A03 1px 1px 2px;
 }
 
 .destinationInfo {

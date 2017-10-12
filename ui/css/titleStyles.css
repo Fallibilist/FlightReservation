@@ -47,7 +47,8 @@
 
     color: white;
     text-shadow: #D78952 1px 1px 4px;
-    background: radial-gradient(rgba(23, 7, 0, 0.93), rgba(16, 0, 0, 0.75));
+    background: linear-gradient(rgba(23, 7, 0, 0.93), rgba(129, 78, 44, 0.65), rgba(23, 7, 0, 0.93));
+    /* background: radial-gradient(rgba(23, 7, 0, 0.93), rgba(16, 0, 0, 0.75)); */
 
     padding-left: 2vw;
     padding-right: 2vw;
@@ -112,16 +113,20 @@
 
 /* Styles the submission buttons at the bottom of the box */
 .boxButton {
-    font-size: large;
-    color: white;
+    font-size: 20px;
+    color: black;
+    text-shadow: #D78952 1px 1px 4px;
     
-    background-color: rgba(65, 30, 12, 0.85);
-    border-color: rgba(37, 16, 6, 0.84);
-    border-radius: 1vw;
-    border-width: 1px 1px 1px 1px;
+    background: radial-gradient(rgba(176, 71, 29, 0.80), rgba(71, 30, 8, 0.45));
+    box-shadow: 1px 1px 0px 2px rgba(31, 16, 9, 0.57);
+    border-color: rgba(143, 77, 47, 0.16);
 
     margin: 6px 10px 6px 10px;
     padding: 4px 1vh 4px 1vh;
 
     cursor: pointer;
+}
+
+.switch {
+    color: black;
 }

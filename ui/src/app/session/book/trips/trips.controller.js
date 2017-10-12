@@ -6,20 +6,28 @@ class TripsController {
 
     tripList = []
 
-    constructor(tripsService, $interval) {
+    constructor(tripsService, $interval, $state, userDataService) {
         this.tripsService = tripsService
+
+        if (!userDataService.loggedIn()) {
+            $state.go('title.login')
+        }
+
         this.retrieveTrips()
-        $interval(() => this.retrieveTrips(), 25000)
+        $interval(() => this.retrieveTrips(), 5000)
     }
 
     retrieveTrips() {
         this.tripsService.retrieveTrips(this.originSelection, this.destinationSelection).then((succeedResponse) => {
             succeedResponse.data.forEach((trip) => {
-                trip.output = []
+                trip.flightOutput = []
                 for (let i = 0; i < trip.length; i++) {
-                    trip.output.push(`${trip[i].origin} to ${trip[i].destination}\nDeparture: ${trip[i].offset}:00AM\nFlight Duration: ${trip[i].flightTime} hour(s)`)
+                    trip.flightOutput.push(trip[i])
+                    trip.flightOutput[i].to = 'to'
+                    trip.flightOutput[i].hours = 'hour(s)'
                     if ((i + 1) < trip.length) {
-                        trip.output.push(`------>\nLayover Duration: ${trip[i + 1].offset - trip[i].offset}`)
+                        trip.flightOutput[i].layovers = []
+                        trip.flightOutput[i].layovers.push(trip[i + 1].offset - trip[i].offset)
                     }
                 }
             })
@@ -28,32 +36,37 @@ class TripsController {
                 this.tripList = succeedResponse.data
             } else {
                 let defaultTrip = []
-                defaultTrip.output = ['No Flights Avaliable']
+                let flight = []
+                flight.origin = 'No Trips'
+                flight.destination = 'Avaliable'
+                defaultTrip.flightOutput = [flight]
                 this.tripList = [defaultTrip]
             }
         })
     }
 
     bookTrip(trip) {
-        const outputTrip = {
-            origins: [],
-            destinations: [],
-            flightTimes: [],
-            layoverTimes: []
-        }
+        if (trip.length > 0) {
 
-        for (let i = 0; i < trip.length; i++) {
-            outputTrip.origins.push()
-            outputTrip.destinations.push()
-            outputTrip.flightTimes.push()
-            if ((i + 1) < trip.length) {
-                outputTrip.layoverTimes.push(trip[i + 1].offset - trip[i].offset)
+            const outputTrip = {
+                origins: [],
+                destinations: [],
+                flightTimes: [],
+                layoverTimes: []
             }
+
+            for (let i = 0; i < trip.length; i++) {
+                outputTrip.origins.push(trip[i].origin)
+                outputTrip.destinations.push(trip[i].destination)
+                outputTrip.flightTimes.push(trip[i].flightTime)
+
+                if ((i + 1) < trip.length) {
+                    outputTrip.layoverTimes.push(trip[i + 1].offset - trip[i].offset)
+                }
+            }
+
+            this.tripsService.bookTrip(outputTrip).then((succeedResponse) => {})
         }
-
-        this.tripsService.bookTrip(outputTrip).then((succeedResponse) => {
-
-        })
     }
 }
 

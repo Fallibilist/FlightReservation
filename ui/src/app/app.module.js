@@ -70,11 +70,11 @@ angular
       }
 
       $stateProvider.state(titleState)
-      .state(loginState)
-      .state(newuserState)
-      .state(sessionState)
-      .state(bookState)
-      .state(historyState)
+        .state(loginState)
+        .state(newuserState)
+        .state(sessionState)
+        .state(bookState)
+        .state(historyState)
 
       $urlRouterProvider.otherwise('/title/login')
     }

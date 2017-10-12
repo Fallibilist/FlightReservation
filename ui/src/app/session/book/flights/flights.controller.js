@@ -3,10 +3,15 @@ class FlightsController {
 
     flightList = []
 
-    constructor(flightsService, $interval) {
+    constructor(flightsService, $interval, $state, userDataService) {
         this.flightsService = flightsService
+
+        if (!userDataService.loggedIn()) {
+            $state.go('title.login')
+        }
+
         this.retrieveFlights()
-        $interval(() => this.retrieveFlights(), 25000)
+        $interval(() => this.retrieveFlights(), 5000)
     }
 
     retrieveFlights() {

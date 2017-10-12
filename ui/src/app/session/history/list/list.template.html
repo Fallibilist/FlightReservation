@@ -1,8 +1,11 @@
 <div class="listPanel">
         <div class="listTitle"> Previous Trips </div>
-        <div class="listItem listItemBordered"> Previous trip placeholder </div>
-        <div class="listItem listItemBordered"> Previous trip placeholder </div>
-        <div class="listItem listItemBordered"> Previous trip placeholder </div>
-        <div class="listItem listItemBordered"> Previous trip placeholder </div>
-        <div class="listItem"> Previous trip placeholder </div>
+        <div class="listButtons">
+                <div class="listItem listItemBordered" 
+                        ng-repeat="trip in $listCtrl.itinerary" 
+                        ng-click="$listCtrl.displayTripDetails(trip)"
+                        ng-style="{ background : trip.selectedStyle }">
+                        {{ trip.title }}
+                </div>
+        </div>
 </div>

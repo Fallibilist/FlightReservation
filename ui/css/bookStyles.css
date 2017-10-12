@@ -67,6 +67,33 @@
     border-bottom: 1px solid #A6683B;
 }
 
+.tripButtons {
+    width: calc(50vw - 5px);
+    height: calc((((100vh - 252px) / 6) * 5) - 5px);
+
+    margin-top: 5px;
+    margin-right: 5px;
+
+    overflow: scroll;
+}
+
+.tripButtons::-webkit-scrollbar {
+    width: 1em;
+}
+
+.tripButtons::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.00);
+}
+
+.tripButtons::-webkit-scrollbar-thumb {
+    background: radial-gradient(rgba(175, 59, 0, 0.91), rgba(66, 32, 2, 0.34), rgba(66, 32, 2, 0.00));
+    outline: 1px solid #D46E09;
+}
+
+.tripButtons::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.00);
+}
+
 .tripPanelItem {
     cursor: pointer;
     width: 46vw;
@@ -78,12 +105,11 @@
     align-items: center;
     justify-content: center;
 
-    font-size: 22px;
-    /* font-family: 'Cook'; */
-    color: #847B7B;
-    text-shadow: #130A03 1px 1px 2px;
+    font-size: 20px;
+    color: rgba(189, 191, 214, 0.47);
+    text-shadow: #1C1815 1px 1px 1px;
 
-    height: calc((100vh - 252px) / 2.5);
+    height: calc(((100vh - 252px) / 2.5) - 2.5px);
     border-bottom: 1px solid #A6683B;
 }
 
@@ -134,4 +160,63 @@
 
 .dropdownOption:hover {
     background: radial-gradient(rgba(49, 22, 0, 0.79), rgba(234, 118, 69, 0.42));
+}
+
+.flightWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.flightInfoBox {
+    width: calc((46vw - 15vw) / 3);
+    height: calc(((100vh - 252px) / 2.5) - 40px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #A6683B;
+    background: linear-gradient(rgba(28, 11, 0, 0.89), rgba(61, 22, 1, 0.91), rgba(29, 12, 0, 0.89));
+}
+
+.layoverInfoBox {
+    width: 7vw;
+    height: calc(((100vh - 252px) / 2.5) - 80px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    border: 1px solid #A6683B;
+    background: linear-gradient(rgba(47, 20, 0, 0.89), rgba(37, 13, 0, 0.91), rgba(47, 20, 0, 0.89));
+
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+
+.flightInfoItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layoverInfoItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: rgba(142, 98, 57, 0.83) ;
+    text-shadow: #000000 1px 1px 2px;
+}
+
+.flightInfoLocations {
+    font-size: 25px;
+    /* color: #CDBEB2;
+    text-shadow: #1C1815 1px 1px 1px; */
+    color: rgba(142, 98, 57, 0.83) ;
+    text-shadow: #000000 1px 1px 2px;
 }

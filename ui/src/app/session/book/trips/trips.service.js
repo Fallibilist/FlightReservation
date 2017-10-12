@@ -17,7 +17,7 @@ class TripsService {
     }
 
     bookTrip(trip) {
-        return this.$http.get(`${this.apiUrl}/flights/trips/${this.userDataService.credentials.username}`, trip)
+        return this.$http.post(`${this.apiUrl}/flights/trips/${this.userDataService.credentials.username}`, trip)
     }
 
 }
