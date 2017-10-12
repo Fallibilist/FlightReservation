@@ -1,7 +1,17 @@
 <div class="infoPanel">
         <div class="infoTitle"> Trip Details </div>
         <div class="infoBody">
-                <div class="destinationInfo"> {{ $infoCtrl.historyService.trip.destinationInfo }} </div>
+                <div class="destinationInfo">
+                        <div class="destinationInfoWrapper" ng-style="$infoCtrl.displayWrapper()">
+                                <div class="destinationInfoFlight" ng-repeat="flight in $infoCtrl.flights">
+                                        <div class="destinationInfoItem destinationInfoData">
+                                                <div class="destinationInfoText"> {{ flight.locations }} </div>
+                                                <div class="destinationInfoText"> {{ flight.flightTime }} </div>
+                                        </div>
+                                        <div class="destinationInfoItem destinationInfoLayover" ng-repeat="layover in flight.layover"> {{ flight.layover[0] }} </div>
+                                </div>
+                        </div>
+                </div>
                 <div class="flightTime"> {{ $infoCtrl.historyService.trip.totalFlightTime }} </div>
                 <div class="layoverTime"> {{ $infoCtrl.historyService.trip.totalLayoverTime }} </div>
         </div>

@@ -45,10 +45,9 @@
     justify-content: space-around;
     align-items: center;
 
-    color: white;
-    text-shadow: #D78952 1px 1px 4px;
+    color: rgba(242, 189, 137, 0.92) ;
+    text-shadow: #000000 1px 1px 2px;
     background: linear-gradient(rgba(23, 7, 0, 0.93), rgba(129, 78, 44, 0.65), rgba(23, 7, 0, 0.93));
-    /* background: radial-gradient(rgba(23, 7, 0, 0.93), rgba(16, 0, 0, 0.75)); */
 
     padding-left: 2vw;
     padding-right: 2vw;
@@ -128,5 +127,8 @@
 }
 
 .switch {
+    background: rgba(255, 255, 255, 0.04);
     color: black;
+    border-color: rgba(143, 77, 47, 0.16);
+    text-shadow: rgba(200, 112, 73, 0.51) 1px 1px 2px;
 }

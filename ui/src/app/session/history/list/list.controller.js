@@ -1,18 +1,18 @@
 /* @ngInject */
 class ListController {
 
-    itinerary = []
-
     constructor(listService, historyService, $state, userDataService) {
         this.listService = listService
         this.historyService = historyService
         this.$state = $state
+        this.itinerary = listService.backupItinerary
 
         if(!userDataService.loggedIn()) {
             $state.go('title.login')
+        } else {
+            this.retrieveIntinerary()
         }
 
-        this.retrieveIntinerary()
     }
 
     retrieveIntinerary() {
@@ -21,7 +21,10 @@ class ListController {
                 succeedResponse.data.forEach((trip) => {
                     trip.title = `From ${trip.origins[0]} to ${trip.destinations[trip.destinations.length - 1]}`
                 });
-                this.itinerary = succeedResponse.data.reverse()
+
+                if(succeedResponse.data.length !== this.itinerary.length) {
+                    this.itinerary = succeedResponse.data.reverse()
+                }
             }
         })
     }
@@ -33,19 +36,21 @@ class ListController {
         trip.flightTimes.forEach((time) => {
             trip.totalFlightTime += time
         })
-        trip.totalFlightTime = `Flight Time: ${trip.totalFlightTime} hours`
+        trip.totalFlightTime = `Flight Duration: ${trip.totalFlightTime} hour(s)`
 
         trip.totalLayoverTime = 0
         trip.layoverTimes.forEach((time) => {
             trip.totalLayoverTime += time
         })
-        trip.totalLayoverTime = `Layover Time: ${trip.totalLayoverTime} hours`
+        trip.totalLayoverTime = `Layover Duration: ${trip.totalLayoverTime} hour(s)`
 
-        this.historyService.trip = trip
         this.itinerary.forEach((trip) => {
             trip.selectedStyle = 'rgba(0, 0, 0, 0.00)'
         })
         trip.selectedStyle = 'linear-gradient(to right, rgba(0, 0, 0, 0.00), rgba(61, 18, 0, 0.95), rgba(0, 0, 0, 0.00))'
+        this.historyService.trip = trip
+
+        this.listService.backupItinerary = this.itinerary;
 
         this.$state.reload()
     }

@@ -11,9 +11,9 @@ class MapController {
 
         if (!userDataService.loggedIn()) {
             $state.go('title.login')
+        } else {
+            this.drawTrip()
         }
-
-        this.drawTrip()
     }
 
     addMarker({

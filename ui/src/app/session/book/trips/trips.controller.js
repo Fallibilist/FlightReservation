@@ -11,10 +11,11 @@ class TripsController {
 
         if (!userDataService.loggedIn()) {
             $state.go('title.login')
+        } 
+        else {
+            this.retrieveTrips()
+            $interval(() => this.retrieveTrips(), 5000)
         }
-
-        this.retrieveTrips()
-        $interval(() => this.retrieveTrips(), 5000)
     }
 
     retrieveTrips() {
@@ -32,7 +33,8 @@ class TripsController {
                 }
             })
 
-            if (succeedResponse.data.length !== 0) {
+            if (succeedResponse.data.length !== 0 &&
+                this.originSelection !== this.destinationSelection) {
                 this.tripList = succeedResponse.data
             } else {
                 let defaultTrip = []
@@ -47,7 +49,6 @@ class TripsController {
 
     bookTrip(trip) {
         if (trip.length > 0) {
-
             const outputTrip = {
                 origins: [],
                 destinations: [],

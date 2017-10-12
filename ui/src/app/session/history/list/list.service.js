@@ -1,6 +1,8 @@
 /* @ngInject */
 class ListService {
     
+    backupItinerary = []
+
     constructor($http, apiUrl, userDataService) {
         this.$http = $http
         this.apiUrl = apiUrl

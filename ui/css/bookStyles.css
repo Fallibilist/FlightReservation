@@ -215,8 +215,6 @@
 
 .flightInfoLocations {
     font-size: 25px;
-    /* color: #CDBEB2;
-    text-shadow: #1C1815 1px 1px 1px; */
     color: rgba(142, 98, 57, 0.83) ;
     text-shadow: #000000 1px 1px 2px;
 }

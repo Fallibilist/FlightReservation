@@ -64,7 +64,7 @@ public class FlightService {
 
 		UserEntity user = userJpaRepository.findByCredentialsUsername(username);
 
-		if(user.getTrips() != null && !user.getTrips().isEmpty()) {
+		if(user != null && user.getTrips() != null && !user.getTrips().isEmpty()) {
 			return tripMapper.toDto(user.getTrips());
 		} else {
 			return null;
@@ -78,7 +78,6 @@ public class FlightService {
 		
 		UserEntity user = userJpaRepository.findByCredentialsUsername(username);
 		trip.setUser(user);
-		System.out.println("\n\n\n\n\nId: " + trip.getId() + "\nOrigin: " + trip.getOrigins() + "\nDestination: " + trip.getUser() + "\n\n\n\n");
 		tripJpaRepository.save(trip);
 	}
 	
